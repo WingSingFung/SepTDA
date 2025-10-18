@@ -1,0 +1,26 @@
+rotary-embedding-torch==0.6.1
+pandas
+soundfile
+scipy
+tqdm
+typeguard==2.13.3
+humanfriendly
+kaldiio
+resampy
+packaging
+torch_complex
+ci_sdr
+fast_bss_eval
+librosa
+pyyaml
+h5py
+pyloudnorm
+g2p_en
+jamo
+sentencepiece
+espnet_tts_frontend
+tensorboard
+# If you already have torch and torchvision installed, I think any version is fine.
+torch
+torchvision
+torchaudio

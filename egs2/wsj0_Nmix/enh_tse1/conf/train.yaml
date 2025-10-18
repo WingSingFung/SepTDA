@@ -1,0 +1,113 @@
+# Copyright (C) 2024 Mitsubishi Electric Research Laboratories (MERL)
+#
+# SPDX-License-Identifier: Apache-2.0
+task: &task enh
+
+init: xavier_uniform
+max_epoch: 150
+use_amp: false
+batch_type: folded
+sort_batch: descending
+batch_size: 24  # batch size 
+valid_batch_size: 24
+num_workers: 16
+unused_parameters: true
+# preprocessor
+preprocessor: enh
+num_spk: &num_spk 5
+iterator_type: sequence # not to discard short samples
+chunk_length: 32000 # 8k * 4s
+
+# espnet model configuration
+model_conf:
+    num_spk: *num_spk
+    share_encoder: true
+    task: *task
+    normalization: true
+
+train_spk2enroll: data/tr_min_8k/spk2enroll.json
+enroll_segment: 32000
+load_spk_embedding: false
+load_all_speakers: true
+
+# optimizer and scheduler
+optim: adamw
+optim_conf:
+    lr: 2.0e-04
+    eps: 1.0e-08
+    weight_decay: 0
+scheduler: warmupreducelr
+scheduler_conf:
+    # for WarmupLR
+    warmup_steps: 5000
+    # for ReduceLROnPlateau
+    mode: min
+    factor: 0.75
+    patience: 2
+
+patience: 10
+accum_grad: 1
+grad_clip: 5.0
+val_scheduler_criterion:
+    - valid
+    - loss
+best_model_criterion:
+    - - valid
+      - snr
+      - max
+    - - valid
+      - loss
+      - min
+keep_nbest_models: 5
+
+# model configuration
+encoder: conv
+encoder_conf:
+    channel: &channel 256
+    kernel_size: &kernel_size 16
+    stride: &stride 8 
+    activation: gelu
+    # The encoder/decoder kernel size L in Section 2.1 and 2.3 is set to 16 
+    # with a stride size of 8 samples.The feature dimensions De set to 256
+decoder: conv
+decoder_conf:
+    channel: *channel
+    kernel_size: *kernel_size
+    stride: *stride
+extractor: septda
+extractor_conf:
+    # general setup
+    hidden_dim: 128
+    num_spk: *num_spk
+    activation: gelu
+    norm_type: LN
+    dual_layers: 1
+    triple_layers: 8
+    segment_size: 96
+    dropout: 0.0
+    # rnn setup
+    rnn_type: LSTM
+    rnn_dim: 256
+    bidirectional: true
+    # self-attention setup
+    att_heads: 4
+    attention_dim: 128
+    flash_attention: false
+    # ffn setup
+    expansion_factor: 4
+    # multi-decoding setup
+    multi_decode: true
+    kernel_size: *kernel_size
+    stride: *stride
+    # tda setup
+    attractor_type: ropetda
+
+criterions:
+    # The first criterion
+  - name: si_snr
+    conf:
+        eps: 1.0e-7
+    wrapper: pit
+    wrapper_conf:
+        weight: 1.0
+        independent_perm: true
