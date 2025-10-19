@@ -973,8 +973,27 @@ if ! "${skip_eval}"; then
         log "Evaluation result for observation: ${data_feats}/${dset}/${nmix}mix/score_summary.json"
         log "Evaluation result for enhancement: ${_dir}/score_summary.json"
 
+        # Calculate SI-SNR improvement for all test sets
+        for dset in ${test_sets}; do
+            for task in enh; do
+            _inf_dir="${enh_exp}/${inference_tag}_${dset}/${task}"
+            _data_dir="${data_feats}/${dset}"
+            
+            log "Calculating SI-SNR improvement for ${dset}..."
+            log "  Inference dir: ${_inf_dir}"
+            log "  Data dir: ${_data_dir}"
+            
+            # Convert inf_nums to comma-separated format
+            _mix_nums=$(echo ${inf_nums} | tr ' ' ',')
+            
+            ${python} ./local/get_SISNR.py \
+                "${_inf_dir}" \
+                --data_feats_dir "${_data_dir}" \
+                --mix_nums "${_mix_nums}" \
+                --compare_baseline
+            done
+        done
     fi
-
 else
     log "Skip the evaluation stages"
 fi

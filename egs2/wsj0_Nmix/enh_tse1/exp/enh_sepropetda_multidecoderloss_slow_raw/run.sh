@@ -1,0 +1,1 @@
+./enh_tse.sh --is_tse_task false --is_tse_and_ss_task true --train_set tr_min_8k --valid_set cv_min_8k --test_sets 'tt_min_8k ' --fs 8k --lang en --ngpu 8 --local_data_opts '--sample_rate 8k --min_or_max min' --enh_config ./conf/train.yaml --stage 6 --stop_stage 6 --enh_config ./conf/ropetda/sepropetda_multidecoderloss_slow.yaml --ngpu 4 --stage 6 "$@"; exit $?

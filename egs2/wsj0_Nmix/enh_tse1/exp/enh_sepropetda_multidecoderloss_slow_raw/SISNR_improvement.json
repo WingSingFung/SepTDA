@@ -1,0 +1,117 @@
+{
+    "2mix_with_true_numspk": {
+        "mix_SISNR": -0.0,
+        "inf_SISNR": 23.92,
+        "SISNR_improvement": 23.92,
+        "Est_num_spk": {
+            "2": {
+                "2": "3000  100.0[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 23.6,
+        "distance_to_SepTDA": -0.32
+    },
+    "2mix_without_true_numspk": {
+        "mix_SISNR": -0.0,
+        "inf_SISNR": 23.84,
+        "SISNR_improvement": 23.84,
+        "Est_num_spk": {
+            "2": {
+                "2": "2954  98.47[%]",
+                "3": "33  1.1[%]",
+                "8": "3  0.1[%]",
+                "4": "4  0.13[%]",
+                "7": "1  0.03[%]",
+                "37": "1  0.03[%]",
+                "5": "2  0.07[%]",
+                "97": "1  0.03[%]",
+                "12": "1  0.03[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 23.6,
+        "distance_to_SepTDA": -0.24,
+        "SepTDA_Est_num_spk": 99.9
+    },
+    "3mix_with_true_numspk": {
+        "mix_SISNR": -3.19,
+        "inf_SISNR": 20.72,
+        "SISNR_improvement": 23.91,
+        "Est_num_spk": {
+            "3": {
+                "3": "3000  100.0[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 23.5,
+        "distance_to_SepTDA": -0.41
+    },
+    "3mix_without_true_numspk": {
+        "mix_SISNR": -3.19,
+        "inf_SISNR": 19.5,
+        "SISNR_improvement": 22.69,
+        "Est_num_spk": {
+            "3": {
+                "3": "2859  95.3[%]",
+                "4": "57  1.9[%]",
+                "2": "83  2.77[%]",
+                "43": "1  0.03[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 22.1,
+        "distance_to_SepTDA": -0.59,
+        "SepTDA_Est_num_spk": 95.93
+    },
+    "4mix_with_true_numspk": {
+        "mix_SISNR": -5.05,
+        "inf_SISNR": 17.2,
+        "SISNR_improvement": 22.25,
+        "Est_num_spk": {
+            "4": {
+                "4": "3000  100.0[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 22.0,
+        "distance_to_SepTDA": -0.25
+    },
+    "4mix_without_true_numspk": {
+        "mix_SISNR": -5.05,
+        "inf_SISNR": 15.35,
+        "SISNR_improvement": 20.4,
+        "Est_num_spk": {
+            "4": {
+                "4": "2752  91.73[%]",
+                "3": "176  5.87[%]",
+                "5": "71  2.37[%]",
+                "2": "1  0.03[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 19.5,
+        "distance_to_SepTDA": -0.9,
+        "SepTDA_Est_num_spk": 90.1
+    },
+    "5mix_with_true_numspk": {
+        "mix_SISNR": -6.28,
+        "inf_SISNR": 14.7,
+        "SISNR_improvement": 20.98,
+        "Est_num_spk": {
+            "5": {
+                "5": "3000  100.0[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 21.0,
+        "distance_to_SepTDA": 0.02
+    },
+    "5mix_without_true_numspk": {
+        "mix_SISNR": -6.28,
+        "inf_SISNR": 10.29,
+        "SISNR_improvement": 16.57,
+        "Est_num_spk": {
+            "5": {
+                "5": "2449  81.63[%]",
+                "4": "551  18.37[%]"
+            }
+        },
+        "SepTDA_SISNR_improvement": 16.9,
+        "distance_to_SepTDA": 0.33,
+        "SepTDA_Est_num_spk": 83.23
+    }
+}

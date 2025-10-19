@@ -20,6 +20,8 @@ jamo
 sentencepiece
 espnet_tts_frontend
 tensorboard
+pystoi
+pesq
 # If you already have torch and torchvision installed, I think any version is fine.
 torch
 torchvision

@@ -123,14 +123,14 @@ tools/lightning_constraints.txt
 tools/versa
 tools/ParallelWaveGAN
 
-# TISDiSS keep - 只保留特定的实验文件夹
-# !egs2/
-# !egs2/wsj0_2mix/
-# !egs2/wsj0_2mix/enh1/
-# !egs2/wsj0_2mix/enh1/exp/
-# !egs2/wsj0_2mix/enh1/exp/enh_train_enh_tisdiss_tflocoformer_en-residual_en1x2_re1x6_l1+1x6_raw/
-# !egs2/wsj0_2mix/enh1/exp/enh_train_enh_tisdiss_tflocoformer_en-residual_en1x2_re1x6_l1+1x6_raw/**
-# # 重新忽略 exp 目录下的其他所有内容
-# egs2/wsj0_2mix/enh1/exp/*
-# # 再次排除我们要保留的文件夹
-# !egs2/wsj0_2mix/enh1/exp/enh_train_enh_tisdiss_tflocoformer_en-residual_en1x2_re1x6_l1+1x6_raw/
+# keep
+!egs2/
+!egs2/wsj0_Nmix/
+!egs2/wsj0_Nmix/enh_tse1
+!egs2/wsj0_Nmix/enh_tse1/exp/
+!egs2/wsj0_Nmix/enh_tse1/exp/enh_sepropetda_multidecoderloss_slow_raw/
+!egs2/wsj0_Nmix/enh_tse1/exp/enh_train_enh_sepropetda_multidecoderloss_slow_raw/**
+# 重新忽略 exp 目录下的其他所有内容
+egs2/wsj0_Nmix/enh_tse1/exp/*
+# 再次排除我们要保留的文件夹
+!egs2/wsj0_Nmix/enh_tse1/exp/enh_sepropetda_multidecoderloss_slow_raw/

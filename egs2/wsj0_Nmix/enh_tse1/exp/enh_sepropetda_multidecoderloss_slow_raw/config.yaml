@@ -1,0 +1,274 @@
+config: ./conf/ropetda/sepropetda_multidecoderloss_slow.yaml
+print_config: false
+log_level: INFO
+dry_run: false
+iterator_type: sequence
+output_dir: exp/enh_sepropetda_multidecoderloss_slow_raw
+ngpu: 1
+seed: 0
+num_workers: 16
+num_att_plot: 3
+dist_backend: nccl
+dist_init_method: env://
+dist_world_size: 4
+dist_rank: 0
+local_rank: 0
+dist_master_addr: localhost
+dist_master_port: 40317
+dist_launcher: null
+multiprocessing_distributed: true
+unused_parameters: true
+sharded_ddp: false
+cudnn_enabled: true
+cudnn_benchmark: false
+cudnn_deterministic: true
+collect_stats: false
+write_collected_feats: false
+max_epoch: 150
+patience: 10
+val_scheduler_criterion:
+- valid
+- loss
+early_stopping_criterion:
+- valid
+- loss
+- min
+best_model_criterion:
+-   - valid
+    - snr
+    - max
+-   - valid
+    - loss
+    - min
+keep_nbest_models: 5
+nbest_averaging_interval: 0
+grad_clip: 5.0
+grad_clip_type: 2.0
+grad_noise: false
+accum_grad: 1
+no_forward_run: false
+resume: true
+train_dtype: float32
+use_amp: false
+log_interval: null
+use_matplotlib: true
+use_tensorboard: true
+create_graph_in_tensorboard: false
+use_wandb: false
+wandb_project: null
+wandb_id: null
+wandb_entity: null
+wandb_name: null
+wandb_model_log_interval: -1
+detect_anomaly: false
+pretrain_path: null
+init_param: []
+ignore_init_mismatch: false
+freeze_param: []
+num_iters_valid: null
+num_iters_per_epoch: null
+batch_size: 12
+valid_batch_size: 12
+batch_bins: 1000000
+valid_batch_bins: null
+train_shape_file:
+- exp/enh_stats_8k/train/speech_mix_shape
+- exp/enh_stats_8k/train/speech_ref1_shape
+- exp/enh_stats_8k/train/enroll_ref1_shape
+- exp/enh_stats_8k/train/speech_ref2_shape
+- exp/enh_stats_8k/train/enroll_ref2_shape
+- exp/enh_stats_8k/train/speech_ref3_shape
+- exp/enh_stats_8k/train/enroll_ref3_shape
+- exp/enh_stats_8k/train/speech_ref4_shape
+- exp/enh_stats_8k/train/enroll_ref4_shape
+- exp/enh_stats_8k/train/speech_ref5_shape
+- exp/enh_stats_8k/train/enroll_ref5_shape
+valid_shape_file:
+- exp/enh_stats_8k/valid/speech_mix_shape
+- exp/enh_stats_8k/valid/speech_ref1_shape
+- exp/enh_stats_8k/valid/enroll_ref1_shape
+- exp/enh_stats_8k/valid/speech_ref2_shape
+- exp/enh_stats_8k/valid/enroll_ref2_shape
+- exp/enh_stats_8k/valid/speech_ref3_shape
+- exp/enh_stats_8k/valid/enroll_ref3_shape
+- exp/enh_stats_8k/valid/speech_ref4_shape
+- exp/enh_stats_8k/valid/enroll_ref4_shape
+- exp/enh_stats_8k/valid/speech_ref5_shape
+- exp/enh_stats_8k/valid/enroll_ref5_shape
+batch_type: folded
+valid_batch_type: null
+fold_length:
+- 80000
+- 80000
+- 80000
+- 80000
+- 80000
+- 80000
+- 80000
+- 80000
+- 80000
+- 80000
+- 80000
+sort_in_batch: descending
+sort_batch: descending
+multiple_iterator: false
+chunk_length: 32000
+chunk_shift_ratio: 0.5
+num_cache_chunks: 1024
+chunk_excluded_key_prefixes: []
+train_data_path_and_name_and_type:
+-   - dump/raw/tr_min_8k/wav.scp
+    - speech_mix
+    - sound
+-   - dump/raw/tr_min_8k/spk1.scp
+    - speech_ref1
+    - text
+-   - dump/raw/tr_min_8k/enroll_spk1.scp
+    - enroll_ref1
+    - text
+-   - dump/raw/tr_min_8k/spk2.scp
+    - speech_ref2
+    - text
+-   - dump/raw/tr_min_8k/enroll_spk2.scp
+    - enroll_ref2
+    - text
+-   - dump/raw/tr_min_8k/spk3.scp
+    - speech_ref3
+    - text
+-   - dump/raw/tr_min_8k/enroll_spk3.scp
+    - enroll_ref3
+    - text
+-   - dump/raw/tr_min_8k/spk4.scp
+    - speech_ref4
+    - text
+-   - dump/raw/tr_min_8k/enroll_spk4.scp
+    - enroll_ref4
+    - text
+-   - dump/raw/tr_min_8k/spk5.scp
+    - speech_ref5
+    - text
+-   - dump/raw/tr_min_8k/enroll_spk5.scp
+    - enroll_ref5
+    - text
+valid_data_path_and_name_and_type:
+-   - dump/raw/cv_min_8k/wav.scp
+    - speech_mix
+    - sound
+-   - dump/raw/cv_min_8k/spk1.scp
+    - speech_ref1
+    - text
+-   - dump/raw/cv_min_8k/enroll_spk1.scp
+    - enroll_ref1
+    - text
+-   - dump/raw/cv_min_8k/spk2.scp
+    - speech_ref2
+    - text
+-   - dump/raw/cv_min_8k/enroll_spk2.scp
+    - enroll_ref2
+    - text
+-   - dump/raw/cv_min_8k/spk3.scp
+    - speech_ref3
+    - text
+-   - dump/raw/cv_min_8k/enroll_spk3.scp
+    - enroll_ref3
+    - text
+-   - dump/raw/cv_min_8k/spk4.scp
+    - speech_ref4
+    - text
+-   - dump/raw/cv_min_8k/enroll_spk4.scp
+    - enroll_ref4
+    - text
+-   - dump/raw/cv_min_8k/spk5.scp
+    - speech_ref5
+    - text
+-   - dump/raw/cv_min_8k/enroll_spk5.scp
+    - enroll_ref5
+    - text
+allow_variable_data_keys: false
+max_cache_size: 0.0
+max_cache_fd: 32
+valid_max_cache_size: null
+exclude_weight_decay: false
+exclude_weight_decay_conf: {}
+optim: adamw
+optim_conf:
+    lr: 0.0002
+    eps: 1.0e-08
+    weight_decay: 0
+scheduler: warmupreducelr
+scheduler_conf:
+    warmup_steps: 5000
+    mode: min
+    factor: 0.75
+    patience: 2
+init: xavier_uniform
+model_conf:
+    num_spk: 5
+    share_encoder: true
+    task: enh
+    normalization: true
+criterions:
+-   name: si_snr
+    conf:
+        eps: 1.0e-07
+    wrapper: pit
+    wrapper_conf:
+        weight: 1.0
+        independent_perm: true
+train_spk2enroll: data/tr_min_8k/spk2enroll.json
+enroll_segment: 32000
+load_spk_embedding: false
+load_all_speakers: true
+rir_scp: null
+rir_apply_prob: 1.0
+noise_scp: null
+noise_apply_prob: 1.0
+noise_db_range: '13_15'
+short_noise_thres: 0.5
+speech_volume_normalize: null
+use_reverberant_ref: false
+num_spk: 5
+num_noise_type: 1
+sample_rate: 8000
+force_single_channel: false
+n_mix: null
+task: enh
+remove_samples_with_speaker_overlap: false
+encoder: conv
+encoder_conf:
+    channel: 256
+    kernel_size: 16
+    stride: 8
+    activation: gelu
+extractor: septda
+extractor_conf:
+    hidden_dim: 128
+    num_spk: 5
+    activation: gelu
+    norm_type: LN
+    dual_layers: 1
+    triple_layers: 8
+    segment_size: 96
+    dropout: 0.0
+    rnn_type: LSTM
+    rnn_dim: 256
+    bidirectional: true
+    att_heads: 4
+    attention_dim: 128
+    flash_attention: false
+    expansion_factor: 4
+    multi_decode: true
+    kernel_size: 16
+    stride: 8
+    attractor_type: ropetda
+decoder: conv
+decoder_conf:
+    channel: 256
+    kernel_size: 16
+    stride: 8
+preprocessor: enh
+preprocessor_conf: {}
+required:
+- output_dir
+version: '202301'
+distributed: true
