@@ -143,7 +143,7 @@ egs2/wsj0_Nmix/enh_tse1/exp/enh_sepropetda_multidecoderloss_slow_raw/enhanced_tt
 
 ## Acknowledgments
 
-This implementation builds upon the ESPnet framework and is inspired by related work in speech enhancement and separation.
+This repository contains a streamlined version of ESPnet-Enh, designed for easier training and inference of TISDiSS. Since the full ESPnet framework can be complex for new users, we provide this simplified codebase focused specifically on our method. For additional examples, features, and the complete ESPnet-Enh toolkit, please refer to the [ESPnet-Enh repository](https://github.com/espnet/espnet).
 
 Special thanks to [@kohei0209 (Kohei Saijo)](https://github.com/kohei0209) for his excellent work on:
 
